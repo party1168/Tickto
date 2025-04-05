@@ -67,7 +67,7 @@ export default function Home() {
   const [isVerified, setIsVerified] = useState(false);
   const [miniKitStatus, setMiniKitStatus] = useState<'loading' | 'ready' | 'error'>('loading');
   const verifyPayload: VerifyCommandInput = {
-    action: "verify_human", // This is your action ID from the Developer Portal
+    action: "verify_user", // This is your action ID from the Developer Portal
     verification_level: VerificationLevel.Device, // Orb | Device
   };
 
@@ -97,7 +97,7 @@ export default function Home() {
         },
         body: JSON.stringify({
           payload: finalPayload as ISuccessResult, // Parses only the fields we need to verify
-          action: "verify_human",
+          action: "verify_user",
         }),
       });
 

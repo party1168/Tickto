@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import MiniKitProvider from "../components/minikit-provider";
-import ErudaInit from "../components/eruda-init";
+import ErudaInit from "@/components/eruda-init";
 import WorldAppAuth from "../components/world-app-auth";
 
 export const metadata: Metadata = {

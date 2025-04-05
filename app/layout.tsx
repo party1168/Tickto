@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import eruda from "eruda";
+import { useEffect } from "react";
 import MiniKitProvider from "../components/minikit-provider";
 
 export const metadata: Metadata = {
@@ -13,6 +15,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  useEffect(() => {
+    if (process.env.NODE_ENV === "development" && typeof window !== "undefined") {
+      eruda.init();
+    }
+  }, []);
   return (
     <html lang="en">
       <MiniKitProvider>

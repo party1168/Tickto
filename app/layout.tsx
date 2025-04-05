@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import eruda from "eruda";
-import { useEffect } from "react";
 import MiniKitProvider from "../components/minikit-provider";
+import ErudaInit from "../components/eruda-init";
+import WorldAppAuth from "../components/world-app-auth";
 
 export const metadata: Metadata = {
   title: "v0 App",
@@ -15,16 +15,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  useEffect(() => {
-    if (process.env.NODE_ENV === "development" && typeof window !== "undefined") {
-      eruda.init();
-    }
-  }, []);
   return (
     <html lang="en">
-      <MiniKitProvider>
-        <body>{children}</body>
-      </MiniKitProvider>
+      <body>
+        <ErudaInit />
+        <MiniKitProvider>
+          <WorldAppAuth />
+          {children}
+        </MiniKitProvider>
+      </body>
     </html>
   );
 }
